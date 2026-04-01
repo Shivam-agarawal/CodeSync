@@ -1,28 +1,20 @@
-# Stage 1: Build the React Frontend
-FROM node:20 AS frontend-builder
-WORKDIR /app/Frontend
-
-# Install frontend dependencies
-COPY Frontend/package*.json ./
-RUN npm install
-
-# Copy frontend source and build
-COPY Frontend/ ./
-RUN npm run build
-
-# Stage 2: Serve using Express Backend
-FROM node:20
+# CodeSync Production Setup
+FROM node:20-alpine
 WORKDIR /app/Backend
 
-# Install backend dependencies
+# Install build tools for native modules in the backend
+RUN apk add --no-cache python3 make g++
 COPY Backend/package*.json ./
 RUN npm install --omit=dev
+
+# We can remove build tools after installing to keep the image lean
+RUN apk del python3 make g++
 
 # Copy backend source
 COPY Backend/ ./
 
-# Copy the built frontend site from Stage 1 into the Backend's "public" directory
-COPY --from=frontend-builder /app/Frontend/dist ./public
+# Copy the PRE-BUILT frontend directly from the host machine
+COPY Frontend/dist ./public
 
 # Expose the correct port
 EXPOSE 4000

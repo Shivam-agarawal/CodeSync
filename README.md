@@ -17,14 +17,29 @@
 
 ---
 
+## 📸 Screenshots
+
+### Editor View
+Experience real-time sync with teammates in a sleek dark-themed IDE, featuring integrated chat and standard input/output execution panels.
+
+![Editor Screen](assets/editor_screen.png)
+
+### Join Room Lobby
+Seamlessly join rooms alongside a beautiful glassmorphic experience.
+
+![Join Screen](assets/join_screen.png)
+
+---
+
 ## ✨ Features
 
 - **⚡ Real-time Collaboration**: True multiplayer editing powered by Yjs and WebSockets with zero conflict or lag.
 - **🏷️ Remote Cursor Presence**: See exactly where your teammates are typing with color-coded, labeled floating carets.
 - **🏃‍♂️ Live Code Execution**: Write and instantly execute code in multiple languages (Python, JavaScript, C++, Java, etc.) right in the browser.
-- **🖥️ Native Terminal Output**: Outputs standard streams (stdout/stderr) natively to an embedded `xterm.js` terminal, complete with ANSI color support.
+- **⌨️ Stdin Support**: Provide standard input for your programs through a dedicated input panel.
+- **🖥️ Native Terminal Output**: Outputs standard streams (stdout/stderr) natively and aesthetically.
 - **💬 Built-in Room Chat**: Discuss algorithms and bugs with your team without leaving the IDE view.
-- **🌗 Aesthetic UI**: Beautifully designed glassmorphic joining screens, distinct Light/Dark themes, and a responsive layout that works flawlessly on mobile devices.
+- **🌗 Aesthetic UI**: Beautifully designed glassmorphic joining screens, distinct Light/Dark themes, and a responsive layout that works flawlessly on desktop devices.
 
 ---
 
@@ -34,19 +49,20 @@
 - **Framework**: React 19 + Vite
 - **Styling**: Tailwind CSS & Vanilla CSS (custom tokens)
 - **Editor Engine**: `@monaco-editor/react`
-- **Terminal Emulator**: `xterm.js`
+- **Real-Time Data**: `y-monaco`, `y-socket.io`, `yjs`
+- **Output Display**: `xterm.js` for native terminal rendering
 
 ### Backend
-- **Server**: Node.js & Express
-- **Real-time Engine**: `socket.io` & `y-socket.io`
-- **Data Sync**: `yjs` (Conflict-free Replicated Data Types)
-- **Code Execution**: Wandbox Compilation API Proxy
+- **Server Environment**: Node.js & Express
+- **Socket Network**: `socket.io` for seamless WebSockets.
+- **Data Sync**: `y-socket.io` to sync operations reliably across clients.
+- **Code Execution Environment**: Proxying requests to the Wandbox Compilation API for isolated compilation.
 
 ---
 
 ## 🚀 Getting Started
 
-You can run CodeSync locally either via NPM or instantly via Docker.
+You can run CodeSync locally either via NPM or instantly via Docker, saving you time syncing environments.
 
 ### Option 1: Development Mode (NPM)
 
@@ -77,7 +93,7 @@ You can run CodeSync locally either via NPM or instantly via Docker.
 
 ### Option 2: Production Build (Docker)
 
-CodeSync is fully containerized using a multi-stage Docker build, serving the Vite frontend directly from the Express backend port.
+CodeSync is fully containerized using a multi-stage Docker build, serving the optimized Vite frontend directly from the Express backend port. It's the simplest way to run.
 
 1. **Build and Run via Docker Compose**
    ```bash
@@ -89,7 +105,7 @@ CodeSync is fully containerized using a multi-stage Docker build, serving the Vi
 
 ## 🤝 Contributing
 
-Contributions, issues, and feature requests are always welcome! Feel free to check the [issues page](#) if you want to contribute.
+Contributions, issues, and feature requests are always welcome! Feel free to check the [issues](#) page if you want to contribute.
 
 ## 📝 License
 
