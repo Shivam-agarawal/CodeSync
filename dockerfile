@@ -1,5 +1,5 @@
 # Stage 1: Build the React Frontend
-FROM node:20-alpine AS frontend-builder
+FROM node:20 AS frontend-builder
 WORKDIR /app/Frontend
 
 # Install frontend dependencies
@@ -11,7 +11,7 @@ COPY Frontend/ ./
 RUN npm run build
 
 # Stage 2: Serve using Express Backend
-FROM node:20-alpine
+FROM node:20
 WORKDIR /app/Backend
 
 # Install backend dependencies
