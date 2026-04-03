@@ -92,10 +92,12 @@ app.get('/health', (req, res) => {
     })
 })
 
-app.get('{*path}', (req, res) => {
-    res.sendFile(path.join(__dirname, "public", "index.html"))
-})
+app.use(express.static(path.join(__dirname, "public")));
 
-httpServer.listen(4000, () => {
-    console.log("Server is running on port 4000")
-})
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "index.html"));
+});
+
+httpServer.listen(4000, "0.0.0.0", () => {
+  console.log("Server is running on port 4000");
+});
