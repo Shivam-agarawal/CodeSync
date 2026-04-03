@@ -1,22 +1,30 @@
-# CodeSync Production Setup
+# Build frontend assets inside the image so deployment does not depend on local dist artifacts.
+FROM node:20-alpine AS frontend-builder
+WORKDIR /app/Frontend
+COPY Frontend/package*.json ./
+RUN npm ci
+COPY Frontend/ ./
+RUN npm run build
+
 FROM node:20-alpine
 WORKDIR /app/Backend
 
-# Install build tools for native modules in the backend
+ENV NODE_ENV=production
+
+# Install build tools for native modules in the backend.
 RUN apk add --no-cache python3 make g++
 COPY Backend/package*.json ./
-RUN npm install --omit=dev
+RUN npm ci --omit=dev
 
-# We can remove build tools after installing to keep the image lean
+# Remove build tools after dependency installation to keep runtime image lean.
 RUN apk del python3 make g++
 
-# Copy backend source
+# Copy backend source.
 COPY Backend/ ./
 
-# Copy the PRE-BUILT frontend directly from the host machine
-COPY Frontend/dist ./public
+# Copy built frontend assets from the frontend build stage.
+COPY --from=frontend-builder /app/Frontend/dist ./public
 
-# Expose the correct port
 EXPOSE 4000
 
 CMD ["node", "server.js"]
