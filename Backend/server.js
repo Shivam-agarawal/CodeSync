@@ -2,12 +2,7 @@ import express from "express";
 import { createServer } from "http";
 import { Server } from "socket.io";
 import { YSocketIO } from "y-socket.io/dist/server";
-import path from "path";
-import { fileURLToPath } from "url";
 import rateLimit from "express-rate-limit";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 const app = express();
 app.use(express.json());
@@ -25,7 +20,7 @@ app.use((req, res, next) => {
   if (req.method === "OPTIONS") return res.sendStatus(200);
   next();
 });
-app.use(express.static(path.join(__dirname, "public")));
+
 
 const httpServer = createServer(app);
 
@@ -115,10 +110,6 @@ app.get("/health", (req, res) => {
 });
 
 
-
-app.get("/{*path}", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
-});
 
 const PORT = Number(process.env.PORT || 4000);
 
