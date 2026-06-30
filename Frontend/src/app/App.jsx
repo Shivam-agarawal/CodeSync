@@ -249,7 +249,7 @@ function App() {
     setOutputOpen(true);
     setOutput(null);
     try {
-      const apiUrl = import.meta.env.DEV ? "http://localhost:4000" : "";
+      const apiUrl = import.meta.env.VITE_BACKEND_URL || (import.meta.env.DEV ? "http://localhost:4000" : "");
       const res = await fetch(`${apiUrl}/api/execute`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -275,7 +275,7 @@ function App() {
   // Yjs connection
   useEffect(() => {
     if (username && room) {
-      const socketUrl = import.meta.env.DEV ? "http://localhost:4000" : "/";
+      const socketUrl = import.meta.env.VITE_BACKEND_URL || (import.meta.env.DEV ? "http://localhost:4000" : "/");
       const provider = new SocketIOProvider(socketUrl, room, ydoc, { autoConnect: true });
       providerRef.current = provider;
       setIsProviderReady(true);
