@@ -37,6 +37,8 @@ Seamlessly join rooms alongside a beautiful glassmorphic experience.
 
 ---
 
+<a id="features"></a>
+
 ## ✨ Features
 
 - **⚡ Real-time Collaboration**: True multiplayer editing powered by Yjs and WebSockets with zero conflict or lag.
@@ -48,6 +50,8 @@ Seamlessly join rooms alongside a beautiful glassmorphic experience.
 - **🌗 Aesthetic UI**: Beautifully designed glassmorphic joining screens, distinct Light/Dark themes, and a responsive layout that works flawlessly on desktop devices.
 
 ---
+
+<a id="tech-stack"></a>
 
 ## 🛠️ Tech Stack
 
@@ -68,6 +72,8 @@ Seamlessly join rooms alongside a beautiful glassmorphic experience.
 
 ---
 
+<a id="live-demo"></a>
+
 ## 🌐 Live Demo
 
 CodeSync is deployed and available at:
@@ -80,6 +86,8 @@ CodeSync is deployed and available at:
 > **Note**: The backend is hosted on Render's free tier, so the first request after inactivity may take ~30–60 seconds while the server spins up.
 
 ---
+
+<a id="getting-started"></a>
 
 ## 🚀 Getting Started
 
@@ -111,6 +119,8 @@ CodeSync is deployed and available at:
    > The app will automatically open in your default browser at `http://localhost:5173`.
 
 ---
+
+<a id="deployment"></a>
 
 ## 🚢 Deployment
 
