@@ -91,16 +91,6 @@ You can run CodeSync locally either via NPM or instantly via Docker, saving you 
    ```
    > The app will automatically open in your default browser at `http://localhost:5173`.
 
-### Option 2: Production Build (Docker)
-
-CodeSync is fully containerized using a multi-stage Docker build, serving the optimized Vite frontend directly from the Express backend port. It's the simplest way to run.
-
-1. **Build and Run via Docker Compose**
-   ```bash
-   docker-compose up --build -d
-   ```
-2. Open your browser directly to `http://localhost:8080`.
-
 ---
 
 ## 🤝 Contributing
